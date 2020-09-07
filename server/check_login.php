@@ -1,23 +1,15 @@
 <?php
 
-  SESSION_start();
+  include ('./abrir.php');
 
-  include ('../server/abrir.php');
+  if($a = $conn->query("SELECT email, pass FROM `usuarios` ORDER BY `id` ASC")){
 
-  if (!empty($_POST['user']) && !empty($_POST['password'])){
-    $records = $conn->prepare('SELECT id, email, pass FROM $tab1 WHERE email=:email');
-    $records->bindParams(':email', $_POST['email']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
+    printf("La seleccion devolvio %d filas. \n", $a->num_rows);?><p></p><?php
 
-    $message = '';
+    echo json_encode($a);
 
-    if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
-      $_SESSION['user_id'] = $results['id'];
-      header('Locationn: /login.php');
-    }else {
-      $message = 'Lo sentimos, el email o la contraseña son incorrectos';
-    }
-  }
+  };
+  
+  $conn->close();
 
 ?>
