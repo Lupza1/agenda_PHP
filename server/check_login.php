@@ -2,14 +2,19 @@
 
   include ('./abrir.php');
 
-  if($a = $conn->query("SELECT email, pass FROM `usuarios` ORDER BY `id` ASC")){
+  $sql = ("SELECT email, pass FROM `usuarios` ORDER BY id ASC");
 
-    printf("La seleccion devolvio %d filas. \n", $a->num_rows);?><p></p><?php
+  $a = $conn->query($sql);
 
-    echo json_encode($a);
+  if ($a->num_rows > 0) {
+    // output data of each row
+    while($row = $a->fetch_assoc()) {
+        echo "<br> id: ". $row["id"]. " - Email: ". $row["email"]. " - Contraseña: " . $row["pass"] . "<br>";
+    }
+} else {
+    echo "0 results";
+}
 
-  };
-  
   $conn->close();
 
 ?>
