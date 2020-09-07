@@ -2,8 +2,15 @@
 
     include ('./abrir.php');
 
-    if($b = $conn->query("INSERT INTO $tab1 VALUES (NULL, 'jose@gmail.com', 'Jose Perez', MD5('asd'), '1996-05-25')")){
-        printf("Se creo que");
-    };
+    $sql = "INSERT INTO usuarios(email, nombre, pass, fecha_nacimiento)
+    VALUES ('jose@gmail.com', 'Jose Perez', MD5('asd'), '1996-05-25')";
+
+    if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+    } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
 
  ?>
