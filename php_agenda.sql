@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2020 a las 18:44:23
+-- Tiempo de generación: 09-09-2020 a las 00:29:36
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.3.19
 
@@ -54,20 +54,19 @@ INSERT INTO `evento` (`id`, `titulo`, `fecha_inicio`, `hora_inicio`, `fecha_fina
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `fecha_nacimiento` date NOT NULL
+  `fecha_nacimiento` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `nombre`, `pass`, `fecha_nacimiento`) VALUES
-(1, 'juan@gmail.com', 'Juan Rodriguez', '827ccb0eea8a706c4c34a16891f84e7b', '1998-07-19'),
-(2, 'maria@gmail.com', 'Maria Martinez', '900150983cd24fb0d6963f7d28e17f72', '1990-01-30'),
-(3, 'sebas@gmail.com', 'Sebastian Diaz', 'd8578edf8458ce06fbc5bb76a58c5ca4', '1995-02-14'),
-(4, 'jose@gmail.com', 'Jose Perez', '7815696ecbf1c96e6894b779456d330e', '1996-05-25');
+INSERT INTO `usuarios` (`id`, `email`, `pass`, `fecha_nacimiento`) VALUES
+(1, 'juan@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1998-07-19'),
+(2, 'maria@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '1990-01-30'),
+(3, 'sebas@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', '1995-02-14'),
+(4, 'jose@gmail.com', '7815696ecbf1c96e6894b779456d330e', '1996-05-25');
 
 --
 -- Índices para tablas volcadas
@@ -83,7 +82,8 @@ ALTER TABLE `evento`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
