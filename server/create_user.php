@@ -1,6 +1,6 @@
 <?php
 
-    include ('./abrir.php');
+    include ('config.php');
 
     session_start();
 

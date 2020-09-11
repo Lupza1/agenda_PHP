@@ -1,6 +1,6 @@
 <?php
   
-  include ('./abrir.php');
+  include ('config.php');
 
   $sql = ("SELECT * FROM evento ORDER BY id ASC");
 

@@ -8,8 +8,8 @@ class Login {
     this.submitEvent()
   }
 
-  submitEvent(){
-    $('form').submit((event)=>{
+submitEvent(){
+  $('form').submit((event)=>{
       event.preventDefault()
       this.sendForm()
     })
