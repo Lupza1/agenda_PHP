@@ -4,7 +4,7 @@
 
   $sql = ("SELECT * FROM evento ORDER BY id ASC");
 
-  $a = $conn->query($sql);
+  $a = $connection->query($sql);
 
   if ($a->num_rows > 0) {
     // output data of each row
@@ -18,6 +18,6 @@
     echo "0 results";
 }
 
-  $conn->close();
+  $connection->close();
 
 ?>
