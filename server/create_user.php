@@ -1,7 +1,6 @@
 <?php
 
     include ('config.php');
-
     session_start();
 
     if (isset($_POST['register'])) {
@@ -9,7 +8,8 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
-        $query = $connection->prepare("SELECT * FROM usuarios WHERE EMAIL=:email");
+
+        $query = $connection->prepare("SELECT * FROM usuarios WHERE USERNAME=:email");
         $query->bindParam("email", $email, PDO::PARAM_STR);
         $query->execute();
 
@@ -18,17 +18,11 @@
         }
 
         if ($query->rowCount() == 0) {
-
-            $query = $connection->prepare("INSERT INTO usuarios(email, nombre_completo, password, fecha_nacimiento) VALUES (:email,:nombre,:password_hash,:nacimiento)");
-
+            $query = $connection->prepare("INSERT INTO usuarios(id ,USERNAME, nombre_completo, PASSWORD, fecha_nacimiento) VALUES (NULL ,:email,:nombre,:password_hash,:nacimiento)");
             $query->bindParam("email", $email, PDO::PARAM_STR);
-
             $query->bindParam("nombre", $nombre, PDO::PARAM_STR);
-
             $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
-
             $query->bindParam("nacimiento", strtotime(date("Y-m-d")), PDO::PARAM_STR);
-
             $result = $query->execute();
 
             if ($result) {

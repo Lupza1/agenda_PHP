@@ -1,12 +1,17 @@
 <?php
-    define('USER', 'root');
-    define('PASSWORD', '');
-    define('HOST', 'localhost');
-    define('DATABASE', 'php_agenda');
+    $user = 'root';
+    $password = '';
+    $host = 'localhost';
+    $database = 'php_agenda';
 
-    try {
-        $connection = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD);
-    } catch (PDOException $e) {
-        exit("Error: " . $e->getMessage());
+    $connection = mysqli_connect($host, $user, $password, $database);
+
+    if (!$connection) {
+        die("Conexion fallida: ".
+        mysqli_connect_error());
+    }
+    else {
+        echo "Conexion exitosa";
+        header('Location: ../client/main.html');
     }
 ?>
