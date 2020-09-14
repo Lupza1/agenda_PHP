@@ -18,7 +18,7 @@
         }
 
         if ($query->rowCount() == 0) {
-            $query = $connection->prepare("INSERT INTO usuarios(id ,USERNAME, nombre_completo, PASSWORD, fecha_nacimiento) VALUES (NULL ,:email,:nombre,:password_hash,:nacimiento)");
+            $query = $connection->prepare("INSERT INTO usuarios(id ,USERNAME, nombre_completo, PASSWORD, fecha_nacimiento) VALUES (NULL , ':email',':nombre',':password_hash',':nacimiento')");
             $query->bindParam("email", $email, PDO::PARAM_STR);
             $query->bindParam("nombre", $nombre, PDO::PARAM_STR);
             $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
