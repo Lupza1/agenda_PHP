@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-09-2020 a las 01:18:44
+-- Tiempo de generación: 15-09-2020 a las 19:02:39
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.3.19
 
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `evento` (
   `id` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
-  `inicio` datetime NOT NULL,
-  `fin` datetime DEFAULT NULL,
-  `horai` varchar(50) DEFAULT NULL,
-  `horaf` varchar(50) DEFAULT NULL,
+  `inicio` date NOT NULL,
+  `fin` date DEFAULT NULL,
+  `horai` time(4) DEFAULT NULL,
+  `horaf` time(4) DEFAULT NULL,
   `dia_completo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -42,9 +42,8 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`id`, `titulo`, `inicio`, `fin`, `horai`, `horaf`, `dia_completo`) VALUES
-(2, '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '', '', 0),
-(3, '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '', '', 0),
-(4, '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '', '', 0);
+(8, 'ejemplo_nuevo2', '1970-01-01', '2020-09-15', '00:00:00.0000', '00:00:00.0000', 0),
+(10, 'ejemplo_nuevo', '1970-01-01', '2020-09-15', '00:00:00.0000', '00:00:00.0000', 0);
 
 -- --------------------------------------------------------
 
@@ -96,7 +95,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

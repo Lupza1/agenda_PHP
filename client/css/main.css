@@ -78,6 +78,22 @@ label{
 
   height: 60px;
 }
+.update-btn{
+  padding: 1em;
+  height: 20%;
+  background-color: #8B0913;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  color: #fff;
+}
+.update-btn h6{
+  width: 90%;
+}
+.update-btn img{
+
+  height: 60px;
+}
 table{
   background-color: transparent;
 }
